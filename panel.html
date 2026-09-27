@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Brave History Sync Replayer — Panel de Control</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="icons/icon-48.png" alt="Brave Sync Icon">
+        <div>
+          <h1>Brave History Sync Replayer</h1>
+          <p>Reenvío seguro del historial de PC hacia Brave Sync y Android</p>
+        </div>
+      </div>
+      <div class="header-links">
+        <button id="btn-sync-internals">📊 brave://sync-internals</button>
+        <button id="btn-sync-settings">⚙️ Ajustes Sync</button>
+      </div>
+    </header>
+
+    <div class="info-banner">
+      💡 <strong>Cómo funciona:</strong> Se inyecta cada URL única mediante <code>chrome.history.addUrl()</code> dentro del proceso nativo de Brave. Esto dispara el observer <code>OnURLVisited</code> y hace que Brave Sync encripte y suba las entradas en lotes nativos de 90 a <code>sync-v2.brave.com</code>, haciéndolas accesibles en tu teléfono Android.
+    </div>
+
+    <!-- Data source bar -->
+    <div class="source-bar">
+      <span class="source-label">Fuente de datos:</span>
+      <span id="source-status" class="source-badge">Cargando URLs...</span>
+      <div class="source-actions">
+        <button id="btn-scan-browser" class="btn-sm">🔍 Escanear Historial del Navegador</button>
+        <label for="file-input" class="btn-sm btn-file">📂 Cargar JSON personalizado</label>
+        <input type="file" id="file-input" accept=".json" style="display: none;">
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="label">Total URLs</span>
+        <span id="stat-total" class="value">0</span>
+      </div>
+      <div class="stat-card highlight">
+        <span class="label">Sincronizadas</span>
+        <span id="stat-synced" class="value">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Pendientes</span>
+        <span id="stat-pending" class="value">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Tiempo Estimado</span>
+        <span id="stat-eta" class="value">--:--</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>Progreso de Sincronización</span>
+        <span id="status-badge" class="status-badge">Listo para iniciar</span>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-bar-bg">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+        <div class="progress-info">
+          <span id="progress-percentage">0.0% completado</span>
+          <span id="progress-counts">0 / 0</span>
+        </div>
+      </div>
+
+      <div class="current-url-box" id="current-url-display">
+        Esperando inicio...
+      </div>
+
+      <div class="controls-row">
+        <button id="btn-start" class="btn btn-primary">
+          ▶️ Iniciar Sincronización
+        </button>
+        <button id="btn-pause" class="btn btn-secondary" disabled>
+          ⏸️ Pausar
+        </button>
+        <button id="btn-reset" class="btn btn-secondary">
+          🔄 Reiniciar Progreso
+        </button>
+
+        <div class="speed-control">
+          <label for="speed-select">Velocidad:</label>
+          <select id="speed-select">
+            <option value="40">Equilibrada (~40 URLs/s - Recomendado)</option>
+            <option value="70">Rápida (~70 URLs/s)</option>
+            <option value="20">Segura (~20 URLs/s)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="terminal-header">
+        <span>Registro de actividad en tiempo real</span>
+        <button id="btn-clear-log" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:12px;">Limpiar</button>
+      </div>
+      <div id="terminal" class="terminal">
+        <div class="log-entry">
+          <span class="log-time">[00:00:00]</span>
+          <span class="log-msg">Panel inicializado. Haz clic en "Iniciar Sincronización" para comenzar.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>

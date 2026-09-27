@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Brave History Sync</title>
+  <style>
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #1e2029;
+      color: #f1f2f6;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .header img {
+      width: 28px;
+      height: 28px;
+    }
+    .header h2 {
+      font-size: 15px;
+      margin: 0;
+      font-weight: 600;
+      color: #ff5500;
+    }
+    p {
+      font-size: 13px;
+      color: #a4b0be;
+      line-height: 1.4;
+      margin: 0 0 16px 0;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary {
+      background: #ff5500;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .btn-primary:hover {
+      background: #e04b00;
+    }
+    .btn-secondary {
+      background: #2f3542;
+      color: #ced6e0;
+    }
+    .btn-secondary:hover {
+      background: #404b5c;
+    }
+    .info {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #747d8c;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon-48.png" alt="Brave Sync Icon">
+    <h2>History Sync Replayer</h2>
+  </div>
+  <p>Sincroniza tus 16,000+ URLs locales hacia Brave Sync para verlas en tu Android.</p>
+  <button id="open-panel" class="btn btn-primary">Abrir Panel de Sincronización</button>
+  <button id="open-sync-internals" class="btn btn-secondary">Ver brave://sync-internals</button>
+  <div class="info">Se abrirá en una pestaña completa para no interrumpirse.</div>
+  <script src="popup.js"></script>
+</body>
+</html>

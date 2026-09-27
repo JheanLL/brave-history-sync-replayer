@@ -1,0 +1,15 @@
+# User private browsing data - NEVER commit to repository
+urls.json
+urls.example.json
+*.db
+*.db-wal
+*.db-shm
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# OS generated
+.DS_Store
+Thumbs.db
