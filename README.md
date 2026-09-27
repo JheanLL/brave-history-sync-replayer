@@ -88,7 +88,7 @@ Esta extensión local para Brave aprovecha la API nativa `chrome.history.addUrl(
 
 1. **Descarga o clona este repositorio:**
    ```bash
-   git clone https://github.com/TU_USUARIO/brave-history-sync-replayer.git
+   git clone https://github.com/JheanLL/brave-history-sync-replayer.git
    ```
 2. **Carga la extensión en Brave:**
    - Abre `brave://extensions` en tu barra de direcciones.
